@@ -9,13 +9,8 @@ RUN rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 
 COPY ./etc/yum.repos.d/nginx.repo /etc/yum.repos.d/
 
-RUN yum -y --enablerepo=remi,remi-php56 install nginx php-fpm php-common
-
-RUN yum -y install php-mysql \
-    && yum -y install php-cli \
-    && yum -y install php-xml \
-    && yum -y install tar wget \
-    && yum -y install python-pip
+RUN yum -y --enablerepo=remi,remi-php56 install nginx php-fpm php-common \
+    php-mysql php-cli php-xml tar wget python-pip
 
 RUN rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 RUN yum -y install mysql-community-server
